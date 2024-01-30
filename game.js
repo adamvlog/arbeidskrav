@@ -15,7 +15,7 @@ henrietteImg.addEventListener("click", henrietteAttacking);
 arianaImg.addEventListener("click", arianaAttack);
 wyonaImg.addEventListener("click", wyonaAttack);
 
-
+// Navn på heltene
 document.getElementById("healer-name-txt").innerText = "Henriette";
 document.getElementById("archer-name-txt").innerText = "Ariana";
 document.getElementById("warrior-name-txt").innerText = "Wyona";
