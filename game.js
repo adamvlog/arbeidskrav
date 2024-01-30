@@ -59,6 +59,8 @@ let dragonObject = {
   alive: true,
 };
 
+
+//utfører angrep fra hver helt på dragen og kaller deretter funksjonen DaarConterAttack for dragens motangrep.
 function henrietteAttacking() {
   if (dragonObject.alive) {
     attack(0);
@@ -81,4 +83,25 @@ function wyonaAttack() {
   }
 
   DaarConterAttack();
+}
+
+
+//Når brukeren trykker på en av heltene, skal helten angripe drage
+//Den gir beskjed om skaden, oppdaterer dragens helse, og sjekker om dragen er beseiret.
+
+function attack(heroIndex) {
+  alert(
+    `${heroesArray[heroIndex].name} har gjort ${heroesArray[heroIndex].damage} skade på ${dragonObject.name}`
+  );
+
+  dragonObject.currentHP -= heroesArray[heroIndex].damage;
+
+  daarTxt.textContent = `${dragonObject.currentHP}/2000 HP`;
+
+  if (dragonObject.currentHP <= 0) {
+    daarImg.remove();
+    daarTxt.textContent = "0 / 2000 HP";
+    dragonObject.alive = false;
+    alert("Gratulerer du vant!");
+  }
 }
