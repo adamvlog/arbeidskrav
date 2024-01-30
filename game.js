@@ -105,3 +105,36 @@ function attack(heroIndex) {
     alert("Gratulerer du vant!");
   }
 }
+
+function DaarConterAttack() {
+  
+  // WHile loop skal loope gjennom arrayen, og finne en tilfeldig objekt i arrayen som er alive == true;
+  
+    let randomindex;
+  
+    do {
+      randomindex = Math.floor(Math.random() * 3);
+    } while (heroesArray[randomindex].alive === false);
+    
+    let heroType = ["healer", "archer", "warrior"];
+    let heroHealthElement = document.getElementById(
+      `${heroType[randomindex]}-health-txt`
+    );
+  
+    alert(`${dragonObject.name} har angrepet ${heroesArray[randomindex].name}`);
+  
+    heroesArray[randomindex].currentHP -= dragonObject.damage;
+  
+    heroHealthElement.innerText = `${heroesArray[randomindex].currentHP} / ${heroesArray[randomindex].maxHP} HP`;
+  
+    if (heroesArray[randomindex].currentHP <= 0) {
+      heroesArray[randomindex].alive = false;
+      heroesArray[randomindex].img.remove();
+      heroesArray[randomindex].currentHP = 0;
+      heroHealthElement.innerText = `${heroesArray[randomindex].currentHP} / ${heroesArray[randomindex].maxHP} HP`;
+    }
+  
+    if (heroesArray.length === 0) {
+      alert(`${dragonObject.name} har vunnet!`);
+    }
+  }
