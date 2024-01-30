@@ -1,17 +1,20 @@
+//henter inn referanser til html-elementer ved hjelp av CSS-klasser og querySelector.
 const henrietteImg = document.getElementsByClassName("hero")[0];
 const arianaImg = document.getElementsByClassName("hero")[1];
 const wyonaImg = document.getElementsByClassName("hero")[2];
 const daarImg = document.querySelector(".dragon");
 
+//henter referanser til HTML-elementer som viser helsen til heltene og dragen.
 let henrietteTxt = document.getElementById("healer-health-txt");
 let arianaTxt = document.getElementById("archer-health-txt");
 let wyonaTxt = document.getElementById("warrior-health-txt");
-
 let daarTxt = document.querySelector(".dragon-health-txt");
 
+//når en helt blir klikket, utløses funksjonen (henrietteAttacking, arianaAttack, wyonaAttack).
 henrietteImg.addEventListener("click", henrietteAttacking);
 arianaImg.addEventListener("click", arianaAttack);
 wyonaImg.addEventListener("click", wyonaAttack);
+
 
 document.getElementById("healer-name-txt").innerText = "Henriette";
 document.getElementById("archer-name-txt").innerText = "Ariana";
@@ -56,4 +59,26 @@ let dragonObject = {
   alive: true,
 };
 
+function henrietteAttacking() {
+  if (dragonObject.alive) {
+    attack(0);
+  }
 
+  DaarConterAttack();
+}
+
+function arianaAttack() {
+  if (dragonObject.alive) {
+    attack(1);
+  }
+
+  DaarConterAttack();
+}
+
+function wyonaAttack() {
+  if (dragonObject.alive) {
+    attack(2);
+  }
+
+  DaarConterAttack();
+}
